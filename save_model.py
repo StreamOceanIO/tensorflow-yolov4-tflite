@@ -27,7 +27,7 @@ def save_tf():
   def map_fn(img):
     """Decode the web-safe base64-encoded string and pass it on to the jpeg_decode_fn function."""
     return tf.cast(
-      tf.map_fn(jpeg_decode_fn, tf.io.decode_base64(img), dtype=tf.float32),
+      tf.map_fn(jpeg_decode_fn, tf.io.decode_base64(img), fn_output_signature=tf.float32),
       dtype=tf.float32
     )
 
