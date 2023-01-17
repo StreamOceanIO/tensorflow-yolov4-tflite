@@ -74,8 +74,8 @@ def save_tf():
     boxes, scores, classes, valid_detections = tf.image.combined_non_max_suppression(
       boxes=tf.reshape(boxes, (tf.shape(boxes)[0], -1, 1, 4)),
       scores=tf.reshape(pred_conf, (tf.shape(pred_conf)[0], -1, tf.shape(pred_conf)[-1])),
-      max_output_size_per_class=20,
-      max_total_size=20,
+      max_output_size_per_class=100,
+      max_total_size=100,
       score_threshold=FLAGS.score_thres,
     )
     boxes = tf.identity(boxes, name="boxes")
